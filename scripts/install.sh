@@ -144,13 +144,13 @@ td=$(mktemp -d || mktemp -d -t tmp)
 curl -sL $url | tar -C $td -xz
 
 for f in $(ls $td); do
-    test -x $td/$f || continue
+    test -x $td/$f/$crate || continue
 
-    if [ -e "$dest/$f" ] && [ $force = false ]; then
-        err "$f already exists in $dest"
+    if [ -e "$dest/$f/$crate" ] && [ $force = false ]; then
+        err "$f/$crate already exists in $dest"
     else
         mkdir -p $dest
-        install -m 755 $td/$f $dest
+        install -m 755 $td/$f/$crate $dest
     fi
 done
 
