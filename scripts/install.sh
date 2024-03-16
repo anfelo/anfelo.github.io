@@ -137,6 +137,8 @@ say_err "Installing to: $dest"
 
 url="$url/download/$tag/$crate-$tag-$target.tar.gz"
 
+say_err "Artifact url: $url"
+
 td=$(mktemp -d || mktemp -d -t tmp)
 curl -sL $url | tar -C $td -xz
 
